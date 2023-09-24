@@ -2,7 +2,7 @@
 
 A frontend-only example based on React and [casdoor-js-sdk](https://github.com/casdoor/casdoor-js-sdk).
 
-![demo.mp4](demo.mp4)
+https://github.com/casdoor/casdoor-react-only-example/assets/3787410/70db581c-3b0b-46a8-aea2-e4dd0e43825c
 
 ### Installation:
 
