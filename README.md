@@ -1,31 +1,29 @@
 # casdoor-react-only-example
 
-A web SPA only example is implemented through React and [casdoor-js-sdk](https://github.com/casdoor/casdoor-js-sdk).
+A frontend-only example based on React and [casdoor-js-sdk](https://github.com/casdoor/casdoor-js-sdk).
 
 ### Installation:
 
-First, you need to clone the repository.
+First, clone the repository:
 
 ```shell
-git clone https://github.com/casdoor/casdoor-react-only-example.git
+git clone https://github.com/casdoor/casdoor-react-only-example
 ```
 
-Then, download the dependency respectively.
+Then, fetch the dependency:
 
 ```shell
 yarn install
-or 
-npm install
 ```
 
-Next, you need to configure 6 parameters in `web/src/Setting.js`.
+Next, you need to configure 5 parameters in: https://github.com/casdoor/casdoor-react-only-example/blob/master/src/Setting.js
 
 ```js
 const sdkConfig = {
-  serverUrl: "http://localhost:8000", // Casdoor server url
-  clientId: "<your client id>",
-  appName: "<your application name>",
-  organizationName: "<your organization name>",
+  serverUrl: "https://door.casdoor.com", // Casdoor server url
+  clientId: "294b09fbc17f95daf2fe",
+  organizationName: "casbin",
+  appName: "app-vue-python-example",
   redirectPath: "/callback", // your app callback path
 };
 ```
