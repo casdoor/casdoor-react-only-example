@@ -2,6 +2,8 @@
 
 A frontend-only example based on React and [casdoor-js-sdk](https://github.com/casdoor/casdoor-js-sdk).
 
+![demo.mp4](demo.mp4)
+
 ### Installation:
 
 First, clone the repository:
