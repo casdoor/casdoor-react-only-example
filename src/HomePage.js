@@ -13,7 +13,6 @@
 // limitations under the License.
 
 import React from "react";
-import { isSilentSigninRequired, SilentSignin } from "casdoor-react-sdk";
 import * as Setting from "./Setting";
 import LoginPage from "./LoginPage";
 
