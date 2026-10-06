@@ -12,17 +12,41 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {useEffect} from "react";
+import { useEffect, useRef, useState } from "react";
 import * as Setting from "./Setting";
-import {setToken} from "./Setting";
 
 export const AuthCallback = () => {
+  const [error, setError] = useState("");
+  // the code can be exchanged only once, and React runs effects twice in development (StrictMode)
+  const exchanged = useRef(false);
+
   useEffect(() => {
-    Setting.CasdoorSDK.exchangeForAccessToken().then((res) => {
-        setToken(res.access_token);
+    if (exchanged.current) {
+      return;
+    }
+    exchanged.current = true;
+
+    // checks the state, then exchanges the code for the tokens with the PKCE code verifier
+    Setting.CasdoorSDK.exchangeForAccessToken()
+      .then((res) => {
+        if (!res?.access_token) {
+          throw new Error("no access token");
+        }
+        Setting.setToken(res.access_token);
         Setting.goToLink("/");
-      }
-    )
+      })
+      .catch((e) => {
+        setError(e?.error_description || e?.error || e?.message || String(e));
+      });
   }, []);
+
+  if (error) {
+    return (
+      <div style={{ marginTop: 200, textAlign: "center" }}>
+        <p>Failed to sign in: {error}</p>
+        <button onClick={() => Setting.goToLink("/")}>Back</button>
+      </div>
+    );
+  }
   return <div>signing...</div>;
-}
+};

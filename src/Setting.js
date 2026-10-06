@@ -14,6 +14,7 @@
 
 import Sdk from "casdoor-js-sdk";
 
+// The Casdoor application, the defaults are the public demo server https://door.casdoor.com
 const sdkConfig = {
   serverUrl: "https://door.casdoor.com",
   clientId: "294b09fbc17f95daf2fe",
@@ -35,7 +36,7 @@ export const setToken = (token) => {
 
 export const getToken = () => {
   return localStorage.getItem("accessToken");
-}
+};
 
 export const goToLink = (link) => {
   window.location.href = link;
@@ -47,12 +48,8 @@ export const getUserinfo = () => {
 
 export const goToProfilePage = () => {
   window.location.assign(CasdoorSDK.getMyProfileUrl());
-}
+};
 
 export const logout = () => {
   localStorage.removeItem("accessToken");
-};
-
-export const showMessage = (message) => {
-  alert(message);
 };

@@ -26,24 +26,31 @@ class HomePage extends React.Component {
 
   componentDidMount() {
     if (Setting.isLoggedIn()) {
-      Setting.getUserinfo().then((res) => {
-        this.setState({
-          account: res,
+      Setting.getUserinfo()
+        .then((res) => {
+          // Casdoor answers with a status and a message when the token is invalid or has expired
+          if (res?.status === "error" || !res?.name) {
+            throw new Error(res?.msg || "invalid token");
+          }
+          this.setState({
+            account: res,
+          });
+        })
+        .catch(() => {
+          Setting.logout();
+          this.setState({ account: undefined });
         });
-      });
     }
   }
 
   logout() {
     Setting.logout();
-    Setting.showMessage("logout successfully");
     Setting.goToLink("/");
   }
 
   render() {
     if (Setting.isLoggedIn()) {
       if (this.state.account) {
-        console.log(this.state.account)
         return (
           <div
             style={{
@@ -66,6 +73,7 @@ class HomePage extends React.Component {
           </div>
         );
       }
+      return <p style={{ marginTop: 200, textAlign: "center" }}>Loading...</p>;
     }
 
     return (

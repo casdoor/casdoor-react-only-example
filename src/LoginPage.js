@@ -30,6 +30,6 @@ const LoginPage = () => {
       <button onClick={login}>Casdoor Login</button>
     </div>
   );
-}
+};
 
 export default LoginPage;

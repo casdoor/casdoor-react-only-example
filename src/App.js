@@ -17,14 +17,14 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./HomePage";
-import {AuthCallback} from "./AuthCallback";
+import { AuthCallback } from "./AuthCallback";
 
 class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/callback" element={<AuthCallback/>} />
+          <Route path="/callback" element={<AuthCallback />} />
           <Route path="/" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
