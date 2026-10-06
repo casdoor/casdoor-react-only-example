@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 .idea
+
+# Create React App build output
+/build
